@@ -22,12 +22,13 @@ class GPTAnswer(Resource):
         
     def get(self):
         """ GET 请求 """
-        request_data = request.get_json()
-        content = request_data['content']
-        result = self.__chat([
-            { "role":"user", "content":content }
-        ])
-        return result, 200
+        raise ValueError("An error occurred in MyResource GET")
+        # request_data = request.get_json()
+        # content = request_data['content']
+        # result = self.__chat([
+        #     { "role":"user", "content":content }
+        # ])
+        # return result, 200
         
     def __chat(self, message):
         """ 私有调用GPT服务方法 """
