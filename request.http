@@ -1,0 +1,8 @@
+###
+GET http://127.0.0.1:5000/v1/gpt HTTP/1.1
+content-type: application/json
+Authorization: Bearer cJDuIMNjlzlwkkWMocYGgPqRJsrDJSVwWXZlzoxvgCUhsKHLbOG
+
+{
+    "content": "把下面的中文翻译成英文，[urllib3为requests依赖引入，降低 requests版本]"
+}
