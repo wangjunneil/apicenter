@@ -1,7 +1,7 @@
-# apicenter
-my own api center service
+# APICenter
+this my own api center service
 
-# install
+# Install
 
 Python virtual environment and install dependencies
 
@@ -12,3 +12,10 @@ $ pip3 install -r requirements.txt
 ```
 
 Create **.env** file in root directory
+
+# Startup
+
+```shell
+$ chmod u+x ./ctl.sh
+$ ./ctl start|stop|restart
+```
