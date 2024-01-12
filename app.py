@@ -17,7 +17,7 @@ api.add_resource(GPTAnswer, '/v1/gpt')
 def status():
     """
     查看服务健康状态
-    """    
+    """
     return {'success':True, 'message':'The API Server is Running.'}, 200
 
 @app.before_request
@@ -30,11 +30,12 @@ def before_request():
 
 @app.errorhandler(Exception)
 def handler_error(e):
+    logger.error(e);
     return {'success':False, 'message': "An internal error occurred"}, 500
 
 if __name__ == '__main__':
-    
+
     # .env 配置加载
     load_dotenv(find_dotenv(), override=True)
-    
-    app.run(debug=False, host='0.0.0.0', port=5678)
+
+    app.run(debug=False, host='0.0.0.0', port=5000)
