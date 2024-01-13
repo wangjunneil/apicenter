@@ -8,10 +8,10 @@ from modules.chat_gpt import GPTAnswer
 
 # 初始化
 app = Flask(__name__)
-api = Api(app)
+api = Api(app, prefix='/api/v1')
 
 # Restful 路由
-api.add_resource(GPTAnswer, '/v1/gpt')
+api.add_resource(GPTAnswer, '/gpt')
 
 @app.route('/')
 def status():
@@ -34,6 +34,8 @@ def handler_error(e):
     return {'success':False, 'message': "An internal error occurred"}, 500
 
 if __name__ == '__main__':
+    logger.info('info aaa')
+    logger.error('error aaa')
 
     # .env 配置加载
     load_dotenv(find_dotenv(), override=True)

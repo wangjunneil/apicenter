@@ -23,5 +23,5 @@ class Logger(object):
         self.logger.addHandler(th)
 
 # 对象初始化
-log = Logger('logs/app.log',level='debug')
+log = Logger('logs/app.log',level='info')
 logger = log.logger;
