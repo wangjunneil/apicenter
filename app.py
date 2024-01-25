@@ -5,6 +5,7 @@ from dotenv import load_dotenv, find_dotenv
 from tools.auth import auth
 from tools.log import logger
 from modules.chat_gpt import GPTAnswer
+from modules.send_email import MailService
 
 # 初始化
 app = Flask(__name__)
@@ -12,6 +13,7 @@ api = Api(app, prefix='/api/v1')
 
 # Restful 路由
 api.add_resource(GPTAnswer, '/gpt')
+api.add_resource(MailService, '/mail')
 
 @app.route('/')
 def status():
@@ -34,8 +36,11 @@ def handler_error(e):
     return {'success':False, 'message': "An internal error occurred"}, 500
 
 if __name__ == '__main__':
-    logger.info('info aaa')
-    logger.error('error aaa')
+    
+    # 在序列化JSON时不要将其编码为ASCII，避免非ASCII字符转义成\uXXXX格式
+    app.config['JSON_AS_ASCII'] = False
+    # 设置返回的JSON响应的MIME类型及字符集编码
+    app.config['JSONIFY_MIMETYPE'] ="application/json;charset=utf-8"
 
     # .env 配置加载
     load_dotenv(find_dotenv(), override=True)
