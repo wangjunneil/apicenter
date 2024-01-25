@@ -30,7 +30,7 @@ def before_request():
 
 @app.errorhandler(Exception)
 def handler_error(e):
-    logger.error(e);
+    logger.error(e)
     return {'success':False, 'message': "An internal error occurred"}, 500
 
 if __name__ == '__main__':

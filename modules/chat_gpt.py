@@ -25,12 +25,13 @@ class GPTAnswer(Resource):
         request_data = request.get_json()
         content = request_data['content']
         result = self.__chat(content)
-        return {'success':True, 'message':f'{result}'}, 200
+        # return {'success':True, 'message':f'{result}'}, 200
+        return result, 200
 
-    def __chat(self, content):
+    def __chat(self, message):
         """ 私有调用GPT服务方法 """
         chat_completion = self.client.chat.completions.create(
-            messages=[{ "role": "user", "content": f"{content}"}],
+            messages=[{ "role": "user", "content": f"{message}"}],
             model="gpt-3.5-turbo",
             temperature=0,
             max_tokens=120,
